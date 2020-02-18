@@ -1,0 +1,53 @@
+{
+    "name": "nlga/laravel-dropzone",
+    "description": "Ajax upload backend for Laravel. (eg. dropzone.js)",
+    "keywords": [
+        "laravel",
+        "upload",
+        "dropzone"
+    ],
+    "type": "library",
+    "require": {
+        "php": ">=7.2",
+        "illuminate/support": "^6.4",
+        "intervention/image": "^2.4@dev"
+    },
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Thomas Hurtig",
+            "email": "thomas.hurtig@nlga.niedersachsen.de"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "NLGA\\Dropzone\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NLGA\\Dropzone\\Test\\": "tests"
+        }
+    },
+    "config": {
+        "process-timeout": 0
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "NLGA\\Dropzone\\DropzoneServiceProvider"
+            ],
+            "aliases": {
+                "Dropzone": "NLGA\\Dropzone\\Facades\\Dropzone"
+            }
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.4",
+        "spatie/phpunit-watcher": "dev-master"
+    },
+    "scripts": {
+        "test": "phpunit-watcher watch"
+    }
+}

@@ -36,6 +36,8 @@ return [
 
     'thumbnail_h' => 120, //combination of resize and crop to fit image size
 
+    'thumbnail_q' => 60, //thumbnail jpeg quality
+
     'thumbnail_url_expires' => 30 //seconds until thumbnail url gets invalidated
 ];
 ```

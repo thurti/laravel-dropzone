@@ -25,5 +25,7 @@ return [
 
     'thumbnail_h' => 120,
 
+    'thumbnail_q' => 60,
+
     'thumbnail_url_expires' => 30 //seconds until thumbnail url gets invalidated
 ];

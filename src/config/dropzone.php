@@ -5,6 +5,8 @@ return [
 
     'upload_directory' => 'uploads',
 
+    'middleware' => ['web', 'auth'],
+
     'min_filesize'  => 10,
     
     'max_filesize' => 15000, //in kb, is also the total limit for all files
@@ -22,6 +24,8 @@ return [
     'thumbnail_w' => 120,
 
     'thumbnail_h' => 120,
+
+    'thumbnail_q' => 60,
 
     'thumbnail_url_expires' => 30 //seconds until thumbnail url gets invalidated
 ];

@@ -13,6 +13,11 @@ use Intervention\Image\Facades\Image as Image;
 class DropzoneController extends Controller 
 {
     use AuthorizesRequests, ValidatesRequests;
+    
+    public function __construct()
+    {
+        $this->middleware(config('dropzone.middleware'));
+    }
 
     public function upload(UploadRequest $request)
     {
@@ -63,7 +68,7 @@ class DropzoneController extends Controller
         if ($file !== false) {
             try {
                 $image = Image::make($file)->fit(config('dropzone.thumbnail_w'), config('dropzone.thumbnail_h'));
-                return $image->response('jpg', 60);
+                return $image->response('jpg', config('dropzone.thumbnail_q'));
             } catch (\Intervention\Image\Exception\NotReadableException $e) {
                 return response()->json(__('dropzone::messages.thumbnail.no_image'), 406);
             }

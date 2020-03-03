@@ -234,5 +234,5 @@ More advanced example with validation, delete files and preload files.
 ```
 phpunit
 //or 
-composer run-script test //watcher
+composer run-script test --timeout=0 //watcher
 ```

@@ -11,6 +11,7 @@ use Mockery;
 use NLGA\Dropzone\Facades\Dropzone;
 use NLGA\Dropzone\Test\TestCase;
 use Intervention\Image\Facades\Image;
+use NLGA\Dropzone\Http\Controllers\DropzoneController;
 
 class DropzoneControllerTest extends TestCase
 {
@@ -141,5 +142,14 @@ class DropzoneControllerTest extends TestCase
        
         $result = $this->get(URL::temporarySignedRoute('thumbnail', now()->addSeconds(30), ['uploads', 'uuid', 'test1.jpg']));
         $result->assertStatus(406);
+    }
+
+    public function test_adds_middleware_from_config()
+    {
+        Config::set('dropzone.middleware', ['web', 'auth']);
+        $controller = new DropzoneController();
+        $middlewares = $controller->getMiddleware();
+        $this->assertEquals('web', $middlewares[0]['middleware']);
+        $this->assertEquals('auth', $middlewares[1]['middleware']);
     }
 }

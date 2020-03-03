@@ -5,6 +5,8 @@ return [
 
     'upload_directory' => 'uploads',
 
+    'middleware' => ['web', 'auth'],
+
     'min_filesize'  => 10,
     
     'max_filesize' => 15000, //in kb, is also the total limit for all files

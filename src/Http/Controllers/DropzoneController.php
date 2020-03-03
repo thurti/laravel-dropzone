@@ -13,6 +13,11 @@ use Intervention\Image\Facades\Image as Image;
 class DropzoneController extends Controller 
 {
     use AuthorizesRequests, ValidatesRequests;
+    
+    public function __construct()
+    {
+        $this->middleware(config('dropzone.middleware'));
+    }
 
     public function upload(UploadRequest $request)
     {

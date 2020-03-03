@@ -1,6 +1,6 @@
 # Laravel Dropzone
 
-laravel-dropzone is a simple backend for uploading files via ajax (like [Dropzone.js](https://dropzonejs.com)). It stores the files in a temporary folder per session.
+laravel-dropzone is a simple backend for uploading files via ajax (like [Dropzone.js](https://dropzonejs.com)). It stores the files in a temporary folder named by uuid per session.
 
 ## Installation
 
@@ -9,9 +9,40 @@ composer require nlga/laravel-dropzone
 php artisan vendor:publish --provider="NLGA\Dropzone\DropzoneServiceProvider" --tag=config --tag=lang
 ```
 
+## Config
+```php
+return [
+    'disk' => env('DROPZONE_DISK', 'local'),
+
+    'upload_directory' => 'uploads', //base upload directory
+
+    'middleware' => ['web', 'auth'], //middleware for all routes
+
+    'min_filesize'  => 10, //KB
+    
+    'max_filesize' => 15000, //KB, is also the total limit for all files
+    
+    'max_filecount' => 5,
+    
+    'mime_types' => ['jpeg', 'png', 'pdf'], //file ending or mimes
+    
+    'input_name' => 'file', //POST parameter name
+
+    'input_name_delete' => 'file', //POST parameter name for deleting file by hashname
+
+    'thumbnail' => true, //enable thumbnail route
+
+    'thumbnail_w' => 120, //combination of resize and crop to fit image size
+
+    'thumbnail_h' => 120, //combination of resize and crop to fit image size
+
+    'thumbnail_url_expires' => 30 //seconds until thumbnail url gets invalidated
+];
+```
+
 
 ## Usage
-larave-dropzone adds 3 routes which you can use with your js upload script. The routes go through the `web` middleware.
+larave-dropzone adds 4 routes which you can use with your js upload script. By default, the routes use the `web` and `auth`  middleware. Middleware can be changed in `config/dropzone.php`.
 
 ```
 //Routes

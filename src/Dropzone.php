@@ -96,7 +96,7 @@ class Dropzone
         return array_map(function ($file) use ($include_path) {
             $hashname = basename($file);
             $params = explode('/', $file);
-            $thumbnail = URL::temporarySignedRoute('thumbnail', now()->addSeconds(config('thumbnail_url_expires')), [
+            $thumbnail = URL::temporarySignedRoute('dropzone.thumbnail', now()->addSeconds(config('thumbnail_url_expires')), [
                 'dir'  => $params[0],
                 'uuid' => $params[1],
                 'file' => $params[2]

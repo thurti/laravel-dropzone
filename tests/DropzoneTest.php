@@ -95,7 +95,7 @@ class DropzoneTest extends TestCase
         ], $files);
     }
 
-    public function test_delete_file_by_hahs()
+    public function test_delete_file_by_hash()
     {
         $dropzone = Mockery::mock('\NLGA\Dropzone\Dropzone', ['local', 'uploads/session'])->makePartial();
         Session::shouldReceive('forget')->once()->with('hash1');

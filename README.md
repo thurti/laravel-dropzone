@@ -107,9 +107,9 @@ public function saveFiles() {
   $files = Dropzone::getFiles(); //get array with uploaded files
   
   //do something with the uploaded files, eg. store
-  array_walk($files, function ($file) {
+  foreach($files as $file) {
     Storage::copy($file['path'], 'new/path/' + $file['name']);
-  });
+  }
 
   //clean temporary upload directory
   Dropzone::clean();

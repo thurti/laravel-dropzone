@@ -103,7 +103,7 @@ class DropzoneControllerTest extends TestCase
 
     public function test_get_thumbnail_with_valid_link_file_not_found()
     {
-        $result = $this->get(URL::temporarySignedRoute('thumbnail', now()->addSeconds(30), ['uploads', 'uuid', 'test1.jpg']));
+        $result = $this->get(URL::temporarySignedRoute('dropzone.thumbnail', now()->addSeconds(30), ['uploads', 'uuid', 'test1.jpg']));
         $result->assertStatus(404);
     }
 
@@ -115,7 +115,7 @@ class DropzoneControllerTest extends TestCase
         Storage::shouldReceive('exists')->andReturn(true);
         Storage::shouldReceive('download')->andReturn('');
 
-        $result = $this->get(URL::temporarySignedRoute('thumbnail', now()->addSeconds(30), ['uploads', 'uuid', 'test1.jpg']));
+        $result = $this->get(URL::temporarySignedRoute('dropzone.thumbnail', now()->addSeconds(30), ['uploads', 'uuid', 'test1.jpg']));
         $result->assertStatus(404);
     }
 
@@ -131,7 +131,7 @@ class DropzoneControllerTest extends TestCase
         Image::shouldReceive('fit')->withArgs([100,100])->andReturn(Mockery::self());
         Image::shouldReceive('response')->andReturn('');
 
-        $result = $this->get(URL::temporarySignedRoute('thumbnail', now()->addSeconds(30), ['uploads', 'uuid', 'test1.jpg']));
+        $result = $this->get(URL::temporarySignedRoute('dropzone.thumbnail', now()->addSeconds(30), ['uploads', 'uuid', 'test1.jpg']));
         $result->assertStatus(200);
     }
 
@@ -140,7 +140,7 @@ class DropzoneControllerTest extends TestCase
         Storage::shouldReceive('disk')->andReturn(Mockery::self());
         Storage::shouldReceive('get')->andReturn(true); //return true instead of image string, should trigger error
        
-        $result = $this->get(URL::temporarySignedRoute('thumbnail', now()->addSeconds(30), ['uploads', 'uuid', 'test1.jpg']));
+        $result = $this->get(URL::temporarySignedRoute('dropzone.thumbnail', now()->addSeconds(30), ['uploads', 'uuid', 'test1.jpg']));
         $result->assertStatus(406);
     }
 

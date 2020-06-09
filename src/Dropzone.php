@@ -105,7 +105,7 @@ class Dropzone
             return [
                 'name' => Session::get($hashname),
                 'hash' => $hashname,
-                'size' => Storage::size($file),
+                'size' => Storage::disk($this->disk)->size($file),
                 'path' => ($include_path) ? $file : null,
                 'thumbnail' => (config('dropzone.thumbnail') === true) ? $thumbnail : null
             ];

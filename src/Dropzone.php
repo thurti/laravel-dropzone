@@ -161,7 +161,7 @@ class Dropzone
         $files = Storage::disk($this->disk)->files($this->upload_directory);
 
         return array_reduce($files, function ($total, $file) {
-            return $total += Storage::size($file);
+            return $total += Storage::disk($this->disk)->size($file);
         }, 0) / 1000;
     }
 

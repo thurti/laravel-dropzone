@@ -5,7 +5,6 @@ laravel-dropzone is a simple backend for uploading files via ajax (like [Dropzon
 ## Installation
 
 ```
-composer require nlga/laravel-dropzone
 php artisan vendor:publish --provider="NLGA\Dropzone\DropzoneServiceProvider" --tag=config --tag=lang
 ```
 
@@ -44,7 +43,7 @@ return [
 
 
 ## Usage
-larave-dropzone adds 4 routes which you can use with your js upload script. By default, the routes use the `web` and `auth`  middleware. Middleware can be changed in `config/dropzone.php`.
+larave-dropzone adds 4 routes which you can be used by your js upload script. By default, the routes use the `web` and `auth`  middleware. Middleware can be changed in `config/dropzone.php`.
 
 ```
 //Routes

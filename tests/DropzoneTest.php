@@ -76,13 +76,13 @@ class DropzoneTest extends TestCase
         Session::shouldReceive('get')->with('hash2')->andReturns('test2.jpg');
 
         URL::shouldReceive('temporarySignedRoute')->withArgs([
-            'thumbnail', 
+            'dropzone.thumbnail', 
             Mockery::type('Illuminate\Support\Carbon'), 
             ['dir' => 'uploads', 'uuid' =>'session', 'file' => 'hash1']
         ])->andReturn('thumb1.jpg');
         
         URL::shouldReceive('temporarySignedRoute')->withArgs([
-            'thumbnail', 
+            'dropzone.thumbnail', 
             Mockery::type('Illuminate\Support\Carbon'), 
             ['dir' => 'uploads', 'uuid' =>'session', 'file' => 'hash2']
         ])->andReturn('thumb2.jpg');
